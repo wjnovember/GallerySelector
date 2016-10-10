@@ -1,0 +1,2 @@
+# GallerySelector
+使用GalleryFinal框架实现图片本地图片选择
