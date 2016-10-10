@@ -17,6 +17,7 @@
 package cn.finalteam.galleryfinal;
 
 import android.content.Intent;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.io.File;
@@ -157,6 +158,12 @@ public class GalleryFinal {
      * @param callback
      */
     public static void openGalleryMuti(int requestCode, FunctionConfig config, OnHanlderResultCallback callback) {
+        if (config.getSelectedList() == null) {
+            Log.i("haha", "list null");
+        } else if (config.getSelectedList().size() == 0) {
+            Log.i("haha", "list size 0");
+        }
+
         if ( mCoreConfig.getImageLoader() == null ) {
             ILogger.e("Please init GalleryFinal.");
             if(callback != null){
@@ -179,12 +186,14 @@ public class GalleryFinal {
             return;
         }
 
-        if (config.getSelectedList() != null && config.getSelectedList().size() > config.getMaxSize()) {
-            if(callback != null){
-                callback.onHanlderFailure(requestCode, mCoreConfig.getContext().getString(R.string.select_max_tips));
-            }
-            return;
-        }
+
+
+//        if (config.getSelectedList() != null && config.getSelectedList().size() > config.getMaxSize()) {
+//            if(callback != null){
+//                callback.onHanlderFailure(requestCode, mCoreConfig.getContext().getString(R.string.select_max_tips));
+//            }
+//            return;
+//        }
 
         if (!DeviceUtils.existSDCard()) {
             Toast.makeText(mCoreConfig.getContext(), R.string.empty_sdcard, Toast.LENGTH_SHORT).show();

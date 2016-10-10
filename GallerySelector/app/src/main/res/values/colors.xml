@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="titleBarTextColor">#000000</color>
+    <color name="titleBarBgColor">#f6f6f6</color>
+    <color name="fabNormalColor">#ffaa2a</color>
+    <color name="fabPressedColor">#E09625</color>
 </resources>
