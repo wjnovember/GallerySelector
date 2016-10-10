@@ -1,2 +1,6 @@
 # GallerySelector
-使用GalleryFinal框架实现图片本地图片选择
+预期实现效果图如下：
+
+![](https://github.com/iNerdStack/GallerySelector/blob/master/images/preview.png)
+
+框架源自[GalleryFinal](https://github.com/pengjianbo/GalleryFinal)
