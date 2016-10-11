@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 添加一个占位图片
+     *
      * @param list
      */
     private void addEmptyPhoto(List<PhotoInfo> list) {
@@ -192,10 +193,10 @@ public class MainActivity extends AppCompatActivity {
             // 如果有选择图片
             if (resultList != null) {
                 Log.i("haha", "select num " + resultList.size());
-                if (resultList.size() < Constants.PIC_MAX_QUANTITY) {
-                    // 添加占位图片
-                    addEmptyPhoto(resultList);
-                }
+//                if (resultList.size() < Constants.PIC_MAX_QUANTITY) {
+                // 添加占位图片
+                addEmptyPhoto(resultList);
+//                }
 
                 // 清除原来列表中的图片
                 mPhotoList.clear();

@@ -186,8 +186,6 @@ public class GalleryFinal {
             return;
         }
 
-
-
 //        if (config.getSelectedList() != null && config.getSelectedList().size() > config.getMaxSize()) {
 //            if(callback != null){
 //                callback.onHanlderFailure(requestCode, mCoreConfig.getContext().getString(R.string.select_max_tips));

@@ -26,6 +26,7 @@ import android.provider.MediaStore;
 import android.util.DisplayMetrics;
 import android.view.Window;
 import android.widget.Toast;
+
 import cn.finalteam.galleryfinal.model.PhotoInfo;
 import cn.finalteam.galleryfinal.permission.EasyPermissions;
 import cn.finalteam.galleryfinal.utils.ILogger;
@@ -47,7 +48,7 @@ import java.util.List;
  * Author:pengjianbo
  * Date:15/10/10 下午5:46
  */
-public abstract class PhotoBaseActivity extends Activity implements EasyPermissions.PermissionCallbacks{
+public abstract class PhotoBaseActivity extends Activity implements EasyPermissions.PermissionCallbacks {
 
     protected static String mPhotoTargetFolder;
 
@@ -142,7 +143,7 @@ public abstract class PhotoBaseActivity extends Activity implements EasyPermissi
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if ( requestCode == GalleryFinal.TAKE_REQUEST_CODE ) {
+        if (requestCode == GalleryFinal.TAKE_REQUEST_CODE) {
             if (resultCode == RESULT_OK && mTakePhotoUri != null) {
                 final String path = mTakePhotoUri.getPath();
                 if (new File(path).exists()) {
@@ -182,7 +183,8 @@ public abstract class PhotoBaseActivity extends Activity implements EasyPermissi
         GalleryFinal.OnHanlderResultCallback callback = GalleryFinal.getCallback();
         int requestCode = GalleryFinal.getRequestCode();
         if (callback != null) {
-            if ( photoList != null && photoList.size() > 0 ) {
+//            if ( photoList != null && photoList.size() > 0 ) {
+            if (photoList != null && photoList.size() >= 0) {
                 callback.onHanlderSuccess(requestCode, photoList);
             } else {
                 callback.onHanlderFailure(requestCode, getString(R.string.photo_list_empty));
@@ -194,10 +196,10 @@ public abstract class PhotoBaseActivity extends Activity implements EasyPermissi
     protected void resultFailureDelayed(String errormsg, boolean delayFinish) {
         GalleryFinal.OnHanlderResultCallback callback = GalleryFinal.getCallback();
         int requestCode = GalleryFinal.getRequestCode();
-        if ( callback != null ) {
+        if (callback != null) {
             callback.onHanlderFailure(requestCode, errormsg);
         }
-        if(delayFinish) {
+        if (delayFinish) {
             mFinishHanlder.sendEmptyMessageDelayed(0, 500);
         } else {
             finishGalleryFinalPage();
@@ -207,10 +209,10 @@ public abstract class PhotoBaseActivity extends Activity implements EasyPermissi
     protected void resultFailure(String errormsg, boolean delayFinish) {
         GalleryFinal.OnHanlderResultCallback callback = GalleryFinal.getCallback();
         int requestCode = GalleryFinal.getRequestCode();
-        if ( callback != null ) {
+        if (callback != null) {
             callback.onHanlderFailure(requestCode, errormsg);
         }
-        if(delayFinish) {
+        if (delayFinish) {
             finishGalleryFinalPage();
         } else {
             finishGalleryFinalPage();
