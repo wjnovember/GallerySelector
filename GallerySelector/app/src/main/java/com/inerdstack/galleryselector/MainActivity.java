@@ -1,7 +1,10 @@
 package com.inerdstack.galleryselector;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -62,6 +65,15 @@ public class MainActivity extends AppCompatActivity {
 
         // 初始化选中的图片列表
         initSelectedPhoto();
+
+
+//        new AlertDialog.Builder(this)
+//                .setPositiveButton("", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                    }
+//                })
     }
 
     /**
@@ -108,12 +120,26 @@ public class MainActivity extends AppCompatActivity {
      * 启动GalleryFinal
      */
     private void startGlideGalleryFinal() {
+        // 获取标题栏背景颜色
+        int colorTitleBarBg = ContextCompat.getColor(MainActivity.this, R.color.titleBarBgColor);
+        // 标题栏文字颜色
+        int colorTitleBarText = ContextCompat.getColor(MainActivity.this, R.color.titleBarTextColor);
+        // 浮动按钮常规颜色
+        int colorFabNormal = ContextCompat.getColor(MainActivity.this, R.color.fabNormalColor);
+        // 浮动按钮点击颜色
+        int colorFabPressed = ContextCompat.getColor(MainActivity.this, R.color.fabPressedColor);
+        // 标题栏按钮颜色
+        int colorTitleBarIcon = ContextCompat.getColor(MainActivity.this, R.color.colorTitleBarIcon);
+
         // 设置主题
         mThemeConfig = new ThemeConfig.Builder()
-                .setTitleBarBgColor(R.color.titleBarBgColor) // 设置标题栏背景颜色
-                .setTitleBarTextColor(R.color.titleBarTextColor)    // 设置标题栏文字颜色
-                .setFabNornalColor(R.color.fabNormalColor)  // 设置浮动按钮常规颜色
-                .setFabPressedColor(R.color.fabPressedColor)    // 设置浮动按钮点击颜色
+                .setTitleBarBgColor(colorTitleBarBg) // 设置标题栏背景颜色
+                .setTitleBarTextColor(colorTitleBarText)    // 设置标题栏文字颜色
+                .setFabNornalColor(colorFabNormal)  // 设置浮动按钮常规颜色
+                .setFabPressedColor(colorFabPressed)    // 设置浮动按钮点击颜色
+                .setCheckSelectedColor(colorFabNormal)  // 设置选中标记（对勾）的颜色和按钮的颜色相同
+                .setTitleBarIconColor(colorTitleBarIcon) // 设置标题栏按钮颜色
+                .setIconBack(R.drawable.ic_back) // 设置返回按钮
                 .build();
 
         // 初始化图片加载器

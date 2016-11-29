@@ -393,7 +393,6 @@ public class PhotoSelectActivity extends PhotoBaseActivity implements View.OnCli
                     toPhotoEdit();
                 }
             } else { // 添加的代码，使未选中图片时也可返回
-                Log.d("haha", mSelectPhotoList == null ? "null----" : mSelectPhotoList.size() + "------");
                 resultData(mSelectPhotoList);
             }
         } else if (id == R.id.iv_clear) {
@@ -501,7 +500,9 @@ public class PhotoSelectActivity extends PhotoBaseActivity implements View.OnCli
         mTvChooseCount.setText(getString(R.string.selected, mSelectPhotoList.size(), GalleryFinal.getFunctionConfig().getMaxSize()));
         if (mSelectPhotoList.size() > 0 && GalleryFinal.getFunctionConfig().isMutiSelect()) {
             mIvClear.setVisibility(View.VISIBLE);
-            mIvPreView.setVisibility(View.VISIBLE);
+            if (GalleryFinal.getFunctionConfig().isEnablePreview()) {
+                mIvPreView.setVisibility(View.VISIBLE);
+            }
         } else {
             mIvClear.setVisibility(View.GONE);
             mIvPreView.setVisibility(View.GONE);

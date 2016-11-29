@@ -68,31 +68,21 @@ public class PhotoAdapter extends BaseAdapter {
                 .showImageForEmptyUri(cn.finalteam.galleryfinal.R.drawable.ic_gf_default_photo)
                 .showImageOnLoading(cn.finalteam.galleryfinal.R.drawable.ic_gf_default_photo)
                 .build();
-        // 图片控件声明
-        ImageView imgPhoto;
-        // 如果是第一次加载
-        if (convertView == null) {
-            // 初始化ImageView
-            imgPhoto = new ImageView(mContext);
-            // 设置图片尺寸
-            setImgSize(imgPhoto);
-            // 不调整图片宽高比例
-            imgPhoto.setAdjustViewBounds(false);
-            // 设置缩放
-            imgPhoto.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        } else {
-            // 得到图片控件
-            imgPhoto = (ImageView) convertView;
-        }
+        // 初始化ImageView
+        ImageView imgPhoto = new ImageView(mContext);
+        // 设置图片尺寸
+        setImgSize(imgPhoto);
+        // 不调整图片宽高比例
+        imgPhoto.setAdjustViewBounds(false);
+        // 设置缩放
+        imgPhoto.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
-        Log.i("haha", "size is " + mList.size());
         // 如果当前不是最后一张图片，则显示系统选中的图片
-        Log.d("haha", "position " + position);
         // 得到图片类
         PhotoInfo photoInfo = mList.get(position);
         // 获取图片路径
         String path = photoInfo.getPhotoPath();
-        Log.i("haha", "the path is " + path);
+
         // 如果为占位图片
         if (TextUtils.equals(path, Constants.ADD_PIC)) {
             // 加载添加按钮

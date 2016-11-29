@@ -158,12 +158,6 @@ public class GalleryFinal {
      * @param callback
      */
     public static void openGalleryMuti(int requestCode, FunctionConfig config, OnHanlderResultCallback callback) {
-        if (config.getSelectedList() == null) {
-            Log.i("haha", "list null");
-        } else if (config.getSelectedList().size() == 0) {
-            Log.i("haha", "list size 0");
-        }
-
         if ( mCoreConfig.getImageLoader() == null ) {
             ILogger.e("Please init GalleryFinal.");
             if(callback != null){
